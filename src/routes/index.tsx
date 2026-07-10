@@ -594,16 +594,34 @@ function ResultCard({
 
 /* ---------------- Projects ---------------- */
 
+import p33 from "@/assets/projects/IMG-20260710-WA0033.asset.json";
+import p34 from "@/assets/projects/IMG-20260710-WA0034.asset.json";
+import p37 from "@/assets/projects/IMG-20260710-WA0037.asset.json";
+import p38 from "@/assets/projects/IMG-20260710-WA0038.asset.json";
+import p39 from "@/assets/projects/IMG-20260710-WA0039.asset.json";
+import p40 from "@/assets/projects/IMG-20260710-WA0040.asset.json";
+import p41 from "@/assets/projects/IMG-20260710-WA0041.asset.json";
+import p42 from "@/assets/projects/IMG-20260710-WA0042.asset.json";
+import p43 from "@/assets/projects/IMG-20260710-WA0043.asset.json";
+import p44 from "@/assets/projects/IMG-20260710-WA0044.asset.json";
+
 function Projects() {
-  const slots = [
-    { title: "Residential Rooftop — DHA Lahore", size: "10 kW" },
-    { title: "Commercial Warehouse — Sundar Estate", size: "80 kW" },
-    { title: "Farmhouse Hybrid — Bedian Road", size: "15 kW + Battery" },
-    { title: "Textile Factory — Kot Lakhpat", size: "250 kW" },
-    { title: "Villa Installation — Bahria Town", size: "12 kW" },
-    { title: "School Rooftop — Model Town", size: "35 kW" },
+  const projects = [
+    { img: p33.url, title: "Residential Rooftop Array — Lahore", size: "Rooftop Solar" },
+    { img: p38.url, title: "Elevated Ground-Mount Array", size: "High-Yield Setup" },
+    { img: p37.url, title: "Solar Carport Structure", size: "Dual-Purpose Shade + Power" },
+    { img: p44.url, title: "Inverex Nitrox 12kW Hybrid — 3 Phase", size: "12 kW Hybrid" },
+    { img: p39.url, title: "Inverex Nitrox 50kW + 12kW Hybrid Bank", size: "62 kW Combined" },
+    { img: p42.url, title: "Inverex Nitrox 12kW-3P 5G Hybrid", size: "12 kW Hybrid" },
+    { img: p41.url, title: "Huawei On-Grid Inverter Installation", size: "On-Grid System" },
+    { img: p43.url, title: "MaxPower Inverter + Battery Bank", size: "Hybrid + Storage" },
+    { img: p40.url, title: "Crown Nova + Lithium Battery Setup", size: "Hybrid + Lithium" },
+    { img: p34.url, title: "Copper Earthing & Grounding Works", size: "Safety Compliance" },
   ];
-  const logoSlots = Array.from({ length: 6 });
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? projects : projects.slice(0, 4);
+  const remaining = projects.length - 4;
+
   return (
     <section id="projects" className="bg-secondary/40 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-6">
@@ -617,27 +635,19 @@ function Projects() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {slots.map((p, i) => (
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {visible.map((p, i) => (
             <div
               key={i}
-              className="group overflow-hidden rounded-2xl border border-border bg-card"
+              className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:shadow-lg"
             >
-              <div className="relative flex aspect-[4/3] items-center justify-center border-b border-dashed border-border bg-secondary/60">
-                <div className="text-center">
-                  <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-background text-muted-foreground shadow-sm">
-                    <ImageIcon className="h-6 w-6" />
-                  </span>
-                  <p className="mt-3 px-6 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                    Admin: Upload project photo
-                  </p>
-                  <p className="mt-1 text-[11px] text-muted-foreground/70">
-                    Recommended 1200×900 · JPG or PNG
-                  </p>
-                </div>
-                <span className="absolute left-3 top-3 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground">
-                  Placeholder
-                </span>
+              <div className="relative aspect-[4/3] overflow-hidden bg-secondary/60">
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
               </div>
               <div className="p-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -651,33 +661,17 @@ function Projects() {
           ))}
         </div>
 
-        <div className="mt-16">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h3 className="font-display text-2xl font-bold text-foreground">
-                Trusted Partners & Brands
-              </h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Admin: upload official partner / manufacturer logos below.
-              </p>
-            </div>
+        {remaining > 0 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition hover:opacity-90"
+            >
+              {showAll ? "Show Less" : `Show More Projects (+${remaining})`}
+            </button>
           </div>
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {logoSlots.map((_, i) => (
-              <div
-                key={i}
-                className="flex aspect-[3/2] items-center justify-center rounded-xl border border-dashed border-border bg-card"
-              >
-                <div className="text-center">
-                  <Building2 className="mx-auto h-5 w-5 text-muted-foreground" />
-                  <p className="mt-1 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                    Upload logo
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );
