@@ -19,6 +19,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -87,9 +88,11 @@ function Header() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-lg">
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3 md:px-6">
         <a href="#top" className="flex min-w-0 items-center gap-2.5">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-solar-gradient shadow-sm">
-            <Sun className="h-5 w-5 text-navy" strokeWidth={2.5} />
-          </span>
+          <img
+            src={logoImg}
+            alt="Professional Energie Company"
+            className="h-11 w-11 shrink-0 object-contain"
+          />
           <span className="min-w-0">
             <span className="block truncate font-display text-[15px] font-bold leading-tight text-foreground">
               Professional Energie
@@ -581,8 +584,17 @@ function ResultCard({
 
 /* ---------------- Projects ---------------- */
 
+import p26 from "@/assets/projects/IMG-20260710-WA0026.asset.json";
+import p27 from "@/assets/projects/IMG-20260710-WA0027.asset.json";
+import p28 from "@/assets/projects/IMG-20260710-WA0028.asset.json";
+import p29 from "@/assets/projects/IMG-20260710-WA0029.asset.json";
+import p30 from "@/assets/projects/IMG-20260710-WA0030.asset.json";
+import p31 from "@/assets/projects/IMG-20260710-WA0031.asset.json";
+import p32 from "@/assets/projects/IMG-20260710-WA0032.asset.json";
 import p33 from "@/assets/projects/IMG-20260710-WA0033.asset.json";
 import p34 from "@/assets/projects/IMG-20260710-WA0034.asset.json";
+import p35 from "@/assets/projects/IMG-20260710-WA0035.asset.json";
+import p36 from "@/assets/projects/IMG-20260710-WA0036.asset.json";
 import p37 from "@/assets/projects/IMG-20260710-WA0037.asset.json";
 import p38 from "@/assets/projects/IMG-20260710-WA0038.asset.json";
 import p39 from "@/assets/projects/IMG-20260710-WA0039.asset.json";
@@ -604,6 +616,15 @@ function Projects() {
     { img: p43.url, title: "MaxPower Inverter + Battery Bank", size: "Hybrid + Storage" },
     { img: p40.url, title: "Crown Nova + Lithium Battery Setup", size: "Hybrid + Lithium" },
     { img: p34.url, title: "Copper Earthing & Grounding Works", size: "Safety Compliance" },
+    { img: p29.url, title: "Rooftop Panel Array — Residential", size: "Rooftop Solar" },
+    { img: p27.url, title: "Large Rooftop Solar Installation", size: "Commercial Rooftop" },
+    { img: p26.url, title: "High-Capacity Panel Deployment", size: "Rooftop Solar" },
+    { img: p28.url, title: "MaxPower Hybrid Inverter + Battery", size: "Hybrid + Storage" },
+    { img: p30.url, title: "Commercial Steel Structure Prep", size: "Ground-Mount Setup" },
+    { img: p31.url, title: "Elevated Rooftop Solar Structure", size: "Custom Mounting" },
+    { img: p32.url, title: "Growatt Hybrid Inverter Setup", size: "Hybrid Inverter" },
+    { img: p35.url, title: "Solis S5 Series On-Grid Inverter", size: "On-Grid System" },
+    { img: p36.url, title: "Solis Inverter + Distribution Panel", size: "Complete Installation" },
   ];
   const [showAll, setShowAll] = useState(false);
   const visible = showAll ? projects : projects.slice(0, 4);
@@ -900,9 +921,11 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
           <div className="flex items-center gap-2.5">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-solar-gradient">
-              <Sun className="h-5 w-5 text-navy" strokeWidth={2.5} />
-            </span>
+            <img
+              src={logoImg}
+              alt="Professional Energie Company"
+              className="h-11 w-11 object-contain"
+            />
             <div>
               <p className="font-display text-base font-bold">Professional Energie</p>
               <p className="text-[11px] uppercase tracking-widest text-white/60">Company</p>
