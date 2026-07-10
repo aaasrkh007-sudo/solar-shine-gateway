@@ -424,10 +424,10 @@ function Services() {
 
 function Calculator() {
   const [bill, setBill] = useState<number>(25000);
-  const [tariff, setTariff] = useState<number>(50);
 
   const result = useMemo(() => {
-    const monthlyUnits = Math.max(1, Math.round(bill / tariff));
+    const avgTariff = 50;
+    const monthlyUnits = Math.max(1, Math.round(bill / avgTariff));
     // ~4 sun-hours/day, 30 days -> 120 kWh per kW/month
     const systemKw = Math.max(1, +(monthlyUnits / 120).toFixed(1));
     const offsetPct = 90;
@@ -445,7 +445,7 @@ function Calculator() {
       paybackYears,
       co2Tons,
     };
-  }, [bill, tariff]);
+  }, [bill]);
 
   const fmt = (n: number) => "Rs. " + n.toLocaleString("en-PK");
 
@@ -497,19 +497,6 @@ function Calculator() {
               <span>Rs. 5k</span><span>Rs. 500k</span>
             </div>
 
-            <label className="mt-8 block text-sm font-medium text-foreground">
-              Avg. Tariff (PKR / unit)
-            </label>
-            <input
-              type="number"
-              min={10}
-              value={tariff}
-              onChange={(e) => setTariff(Math.max(10, Number(e.target.value) || 10))}
-              className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-lg font-semibold text-foreground outline-none focus:ring-2 focus:ring-ring"
-            />
-            <p className="mt-2 text-xs text-muted-foreground">
-              Typical residential slab tariff in Pakistan is Rs. 40–60 / unit.
-            </p>
           </div>
 
           <div className="lg:col-span-3 p-8">
