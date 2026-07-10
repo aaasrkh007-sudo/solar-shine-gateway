@@ -84,14 +84,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Professional Energie Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, accurate savings calculator, 24/7 support.",
       },
       { name: "author", content: "Professional Energie Company" },
-      { property: "og:title", content: "Professional Energie Company — Premium Solar Solutions" },
+      { property: "og:title", content: "Professional Energie Company — Premium Solar Solutions in Lahore" },
       {
         property: "og:description",
         content:
-          "Cut your electricity bill with expertly engineered solar systems. Serving Lahore 24/7. Book a free consultation today.",
+          "Professional Energie Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, accurate savings calculator, 24/7 support.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Professional Energie Company — Premium Solar Solutions in Lahore" },
+      { name: "twitter:description", content: "Professional Energie Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, accurate savings calculator, 24/7 support." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/88318e62-7342-4312-a538-8184a4867975/id-preview-a8937152--9ec26323-d7ea-49f9-b6c2-769ba0963f44.lovable.app-1783727389008.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/88318e62-7342-4312-a538-8184a4867975/id-preview-a8937152--9ec26323-d7ea-49f9-b6c2-769ba0963f44.lovable.app-1783727389008.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
