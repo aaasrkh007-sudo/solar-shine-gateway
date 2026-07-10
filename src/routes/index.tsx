@@ -618,7 +618,7 @@ function Projects() {
     { img: p34.url, title: "Copper Earthing & Grounding Works", size: "Safety Compliance" },
     { img: p29.url, title: "Rooftop Panel Array — Residential", size: "Rooftop Solar" },
     { img: p27.url, title: "Large Rooftop Solar Installation", size: "Commercial Rooftop" },
-    { img: p33.url === p26.url ? p26.url : p26.url, title: "High-Capacity Panel Deployment", size: "Rooftop Solar" },
+    { img: p26.url, title: "High-Capacity Panel Deployment", size: "Rooftop Solar" },
     { img: p28.url, title: "MaxPower Hybrid Inverter + Battery", size: "Hybrid + Storage" },
     { img: p30.url, title: "Commercial Steel Structure Prep", size: "Ground-Mount Setup" },
     { img: p31.url, title: "Elevated Rooftop Solar Structure", size: "Custom Mounting" },
