@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://solar-shine-gateway.lovable.app/sitemap.xml
