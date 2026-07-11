@@ -689,97 +689,68 @@ function Projects() {
 
 function Testimonials() {
   const reviews = [
-    {
-      name: "Ahmed Raza",
-      role: "Homeowner · DHA Lahore",
-      quote:
-        "The team handled everything — from site survey to net metering. My bill dropped from Rs. 38,000 to under Rs. 3,000. Truly professional service.",
-    },
-    {
-      name: "Sana Malik",
-      role: "Business Owner · Gulberg",
-      quote:
-        "Extremely knowledgeable engineers and clean installation. Their after-sales support is what makes them stand out.",
-    },
-    {
-      name: "Bilal Khan",
-      role: "Factory Manager · Kot Lakhpat",
-      quote:
-        "Our 250 kW system was commissioned on time and is exceeding projected yields. Highly recommend Professional Energie.",
-    },
-    {
-      name: "Fatima Iqbal",
-      role: "Homeowner · Bahria Town",
-      quote:
-        "Transparent pricing, quality panels and no hidden charges. Payback is exactly on track with what they promised.",
-    },
-    {
-      name: "Usman Sheikh",
-      role: "School Administrator",
-      quote:
-        "Excellent workmanship. Our monthly electricity spend has effectively become zero during sunny months.",
-    },
+    { name: "Rao Irfan", role: "Verified Google Review", quote: "Good work 👍", rating: 5 },
+    { name: "Ahmed", role: "Verified Google Review", quote: "Good work", rating: 5 },
+    { name: "Rana Awais", role: "Verified Google Review", quote: "Excellent service and professional installation. Highly recommended!", rating: 5 },
+    { name: "Zahoor Shah Khan", role: "Verified Google Review", quote: "Great experience with Professional Energie Company.", rating: 5 },
+    { name: "Rana Shahbaz", role: "Verified Google Review · 25 photos", quote: "Top quality work and very reliable team.", rating: 5 },
   ];
+  const colors = ["bg-pink-600", "bg-orange-600", "bg-emerald-700", "bg-purple-600", "bg-blue-600"];
+  const loop = [...reviews, ...reviews];
   return (
     <section id="reviews" className="py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-5 md:px-6">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:items-start">
-          <div>
-            <SectionTag>Testimonials & Reviews</SectionTag>
-            <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
-              Loved by homeowners & businesses across Lahore.
-            </h2>
-
-            <div className="mt-8 rounded-3xl border border-border bg-card p-6 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-6 w-6 fill-accent text-accent" />
-                  ))}
-                </div>
-                <span className="font-display text-3xl font-bold text-foreground">5.0</span>
-              </div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Based on <span className="font-semibold text-foreground">5 verified reviews</span>
-              </p>
-              <div className="mt-5 rounded-xl bg-accent/15 p-4 text-sm text-foreground">
-                <p className="font-semibold">100% recommendation rate</p>
-                <p className="mt-1 text-muted-foreground">
-                  Every reviewer would recommend Professional Energie Company to
-                  a friend.
-                </p>
-              </div>
+        <div className="max-w-2xl">
+          <SectionTag>Testimonials & Reviews</SectionTag>
+          <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
+            Loved by homeowners & businesses across Lahore.
+          </h2>
+          <div className="mt-6 flex items-center gap-3">
+            <div className="flex">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-6 w-6 fill-accent text-accent" />
+              ))}
             </div>
+            <span className="font-display text-2xl font-bold text-foreground">5.0</span>
+            <span className="text-sm text-muted-foreground">· Verified Google Reviews</span>
           </div>
+        </div>
+      </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-2">
-            {reviews.map((r) => (
-              <figure
-                key={r.name}
-                className="flex h-full flex-col rounded-2xl border border-border bg-card p-6"
-              >
-                <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
+      <div
+        className="group relative mt-12 overflow-hidden"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        }}
+      >
+        <div className="flex w-max animate-testimonial-marquee gap-5 group-hover:[animation-play-state:paused]">
+          {loop.map((r, idx) => (
+            <figure
+              key={idx}
+              className="flex w-[85vw] max-w-sm shrink-0 flex-col rounded-2xl border border-border bg-card p-6 sm:w-[380px]"
+            >
+              <div className="flex gap-0.5">
+                {Array.from({ length: r.rating }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                ))}
+              </div>
+              <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
+                "{r.quote}"
+              </blockquote>
+              <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+                <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-full font-display font-bold text-white ${colors[idx % colors.length]}`}>
+                  {r.name[0]}
+                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-foreground">{r.name}</p>
+                  <p className="truncate text-xs text-muted-foreground">{r.role}</p>
                 </div>
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
-                  "{r.quote}"
-                </blockquote>
-                <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary font-display font-bold text-primary-foreground">
-                    {r.name[0]}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-foreground">
-                      {r.name}
-                    </p>
-                    <p className="truncate text-xs text-muted-foreground">{r.role}</p>
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
