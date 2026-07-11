@@ -90,12 +90,12 @@ function Header() {
         <a href="#top" className="flex min-w-0 items-center gap-2.5">
           <img
             src={logoImg}
-            alt="Professional Energie Company"
+            alt="Professional Energiez Company"
             className="h-11 w-11 shrink-0 object-contain"
           />
           <span className="min-w-0">
             <span className="block truncate font-display text-[15px] font-bold leading-tight text-foreground">
-              Professional Energie
+              Professional Energiez
             </span>
             <span className="block truncate text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
               Company
@@ -285,7 +285,7 @@ function About() {
             Engineering Pakistan's transition to <span className="text-primary">clean, reliable power</span>.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-            Professional Energie Company is a Lahore-based solar solutions
+            Professional Energiez Company is a Lahore-based solar solutions
             provider specializing in residential, commercial and industrial
             installations. From site survey to net-metering approval, our
             in-house engineers deliver end-to-end systems designed for
@@ -315,7 +315,7 @@ function About() {
         <div className="relative">
           <div className="rounded-3xl border border-border bg-secondary/60 p-8">
             <h3 className="font-display text-xl font-bold text-foreground">
-              Why choose Professional Energie?
+              Why choose Professional Energiez?
             </h3>
             <ul className="mt-6 space-y-4">
               {[
@@ -692,7 +692,7 @@ function Testimonials() {
     { name: "Rao Irfan", role: "Verified Google Review", quote: "Good work 👍", rating: 5 },
     { name: "Ahmed", role: "Verified Google Review", quote: "Good work", rating: 5 },
     { name: "Rana Awais", role: "Verified Google Review", quote: "Excellent service and professional installation. Highly recommended!", rating: 5 },
-    { name: "Zahoor Shah Khan", role: "Verified Google Review", quote: "Great experience with Professional Energie Company.", rating: 5 },
+    { name: "Zahoor Shah Khan", role: "Verified Google Review", quote: "Great experience with Professional Energiez Company.", rating: 5 },
     { name: "Rana Shahbaz", role: "Verified Google Review · 25 photos", quote: "Top quality work and very reliable team.", rating: 5 },
   ];
   const colors = ["bg-pink-600", "bg-orange-600", "bg-emerald-700", "bg-purple-600", "bg-blue-600"];
@@ -894,11 +894,11 @@ function Footer() {
           <div className="flex items-center gap-2.5">
             <img
               src={logoImg}
-              alt="Professional Energie Company"
+              alt="Professional Energiez Company"
               className="h-11 w-11 object-contain"
             />
             <div>
-              <p className="font-display text-base font-bold">Professional Energie</p>
+              <p className="font-display text-base font-bold">Professional Energiez</p>
               <p className="text-[11px] uppercase tracking-widest text-white/60">Company</p>
             </div>
           </div>
@@ -968,7 +968,7 @@ function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-5 text-xs text-white/60 sm:flex-row md:px-6">
-          <p>© {new Date().getFullYear()} Professional Energie Company. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Professional Energiez Company. All rights reserved.</p>
           <p>Powered by the sun ☀ Built in Lahore.</p>
         </div>
       </div>
@@ -982,7 +982,7 @@ function WhatsAppFloat() {
   return (
     <a
       href={`https://wa.me/${PHONE_INTL}?text=${encodeURIComponent(
-        "Hi Professional Energie, I'd like a free solar consultation.",
+        "Hi Professional Energiez, I'd like a free solar consultation.",
       )}`}
       target="_blank"
       rel="noreferrer"
