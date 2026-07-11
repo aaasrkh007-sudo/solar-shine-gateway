@@ -1,0 +1,8 @@
+# Professional Energiez Company
+
+> Premium solar energy systems in Lahore — design, installation, and 24/7 maintenance.
+
+Professional Energiez Company designs, installs, and maintains residential and commercial solar power systems across Lahore, Pakistan. Services include on-grid and hybrid solar, net-metering, battery backup, and ongoing maintenance.
+
+## Pages
+- [Home](/): Overview, services, savings calculator, testimonials, and contact.

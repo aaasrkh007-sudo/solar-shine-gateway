@@ -77,25 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Professional Energiez Company — Premium Solar Solutions in Lahore" },
-      {
-        name: "description",
-        content:
-          "Professional Energiez Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, accurate savings calculator, 24/7 support.",
-      },
       { name: "author", content: "Professional Energiez Company" },
-      { property: "og:title", content: "Professional Energiez Company — Premium Solar Solutions in Lahore" },
-      {
-        property: "og:description",
-        content:
-          "Professional Energiez Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, accurate savings calculator, 24/7 support.",
-      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Professional Energiez Company" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Professional Energiez Company — Premium Solar Solutions in Lahore" },
-      { name: "twitter:description", content: "Professional Energiez Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, accurate savings calculator, 24/7 support." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/88318e62-7342-4312-a538-8184a4867975/id-preview-a8937152--9ec26323-d7ea-49f9-b6c2-769ba0963f44.lovable.app-1783727389008.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/88318e62-7342-4312-a538-8184a4867975/id-preview-a8937152--9ec26323-d7ea-49f9-b6c2-769ba0963f44.lovable.app-1783727389008.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

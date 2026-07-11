@@ -21,8 +21,52 @@ import {
 } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 
+const SITE_URL = "https://solar-shine-gateway.lovable.app";
+const PAGE_TITLE = "Professional Energiez — Solar Solutions in Lahore";
+const PAGE_DESC =
+  "Professional Energiez Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, savings calculator, 24/7 support.";
+const OG_IMAGE =
+  "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/88318e62-7342-4312-a538-8184a4867975/id-preview-a8937152--9ec26323-d7ea-49f9-b6c2-769ba0963f44.lovable.app-1783727389008.png";
+
 export const Route = createFileRoute("/")({
   component: LandingPage,
+  head: () => ({
+    meta: [
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESC },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESC },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:title", content: PAGE_TITLE },
+      { name: "twitter:description", content: PAGE_DESC },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Professional Energiez Company",
+          description: PAGE_DESC,
+          url: SITE_URL,
+          telephone: "+92-307-5395951",
+          image: OG_IMAGE,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress:
+              "Plaza #22, N Block Market, 1st Floor, Khayaban-e-Amin",
+            addressLocality: "Lahore",
+            addressCountry: "PK",
+          },
+          openingHours: "Mo-Su 09:00-21:00",
+          areaServed: "Lahore, Pakistan",
+        }),
+      },
+    ],
+  }),
 });
 
 const PHONE = "03075395951";
@@ -472,7 +516,7 @@ function Calculator() {
               Your bill
             </h3>
 
-            <label className="mt-6 block text-sm font-medium text-foreground">
+            <label htmlFor="calc-bill" className="mt-6 block text-sm font-medium text-foreground">
               Monthly Electricity Bill (PKR)
             </label>
             <div className="mt-2 flex items-center rounded-xl border border-input bg-background focus-within:ring-2 focus-within:ring-ring">
@@ -480,6 +524,7 @@ function Calculator() {
                 Rs.
               </span>
               <input
+                id="calc-bill"
                 type="number"
                 min={0}
                 value={bill}
@@ -488,6 +533,8 @@ function Calculator() {
               />
             </div>
             <input
+              id="calc-bill-range"
+              aria-label="Monthly electricity bill in rupees"
               type="range"
               min={5000}
               max={500000}
@@ -798,10 +845,11 @@ function CTASection() {
           </div>
           <Field name="bill" label="Monthly Bill (PKR)" placeholder="e.g. 25000" className="mt-3" />
           <div className="mt-3">
-            <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <label htmlFor="cta-message" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               Message
             </label>
             <textarea
+              id="cta-message"
               name="message"
               rows={3}
               placeholder="Tell us about your property…"
@@ -835,10 +883,11 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <label htmlFor={`field-${name}`} className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         {label}
       </label>
       <input
+        id={`field-${name}`}
         name={name}
         required={required}
         placeholder={placeholder}
