@@ -20,13 +20,13 @@ import {
   X,
 } from "lucide-react";
 import logoImg from "@/assets/logo.png";
-import ogCover from "@/assets/og-cover.png.asset.json";
+import ogCover from "@/assets/og-cover.png";
 
 const SITE_URL = "https://solar-shine-gateway.lovable.app";
 const PAGE_TITLE = "Professional Energiez — Solar Solutions in Lahore";
 const PAGE_DESC =
   "Professional Energiez Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, savings calculator, 24/7 support.";
-const OG_IMAGE = `${SITE_URL}${ogCover.url}`;
+const OG_IMAGE = `${SITE_URL}${ogCover}`;
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -631,47 +631,47 @@ function ResultCard({
 
 /* ---------------- Projects ---------------- */
 
-import p26 from "@/assets/projects/IMG-20260710-WA0026.asset.json";
-import p27 from "@/assets/projects/IMG-20260710-WA0027.asset.json";
-import p28 from "@/assets/projects/IMG-20260710-WA0028.asset.json";
-import p29 from "@/assets/projects/IMG-20260710-WA0029.asset.json";
-import p30 from "@/assets/projects/IMG-20260710-WA0030.asset.json";
-import p31 from "@/assets/projects/IMG-20260710-WA0031.asset.json";
-import p32 from "@/assets/projects/IMG-20260710-WA0032.asset.json";
-import p33 from "@/assets/projects/IMG-20260710-WA0033.asset.json";
-import p34 from "@/assets/projects/IMG-20260710-WA0034.asset.json";
-import p35 from "@/assets/projects/IMG-20260710-WA0035.asset.json";
-import p36 from "@/assets/projects/IMG-20260710-WA0036.asset.json";
-import p37 from "@/assets/projects/IMG-20260710-WA0037.asset.json";
-import p38 from "@/assets/projects/IMG-20260710-WA0038.asset.json";
-import p39 from "@/assets/projects/IMG-20260710-WA0039.asset.json";
-import p40 from "@/assets/projects/IMG-20260710-WA0040.asset.json";
-import p41 from "@/assets/projects/IMG-20260710-WA0041.asset.json";
-import p42 from "@/assets/projects/IMG-20260710-WA0042.asset.json";
-import p43 from "@/assets/projects/IMG-20260710-WA0043.asset.json";
-import p44 from "@/assets/projects/IMG-20260710-WA0044.asset.json";
+import p26 from "@/assets/projects/IMG-20260710-WA0026.jpg";
+import p27 from "@/assets/projects/IMG-20260710-WA0027.jpg";
+import p28 from "@/assets/projects/IMG-20260710-WA0028.jpg";
+import p29 from "@/assets/projects/IMG-20260710-WA0029.jpg";
+import p30 from "@/assets/projects/IMG-20260710-WA0030.jpg";
+import p31 from "@/assets/projects/IMG-20260710-WA0031.jpg";
+import p32 from "@/assets/projects/IMG-20260710-WA0032.jpg";
+import p33 from "@/assets/projects/IMG-20260710-WA0033.jpg";
+import p34 from "@/assets/projects/IMG-20260710-WA0034.jpg";
+import p35 from "@/assets/projects/IMG-20260710-WA0035.jpg";
+import p36 from "@/assets/projects/IMG-20260710-WA0036.jpg";
+import p37 from "@/assets/projects/IMG-20260710-WA0037.jpg";
+import p38 from "@/assets/projects/IMG-20260710-WA0038.jpg";
+import p39 from "@/assets/projects/IMG-20260710-WA0039.jpg";
+import p40 from "@/assets/projects/IMG-20260710-WA0040.jpg";
+import p41 from "@/assets/projects/IMG-20260710-WA0041.jpg";
+import p42 from "@/assets/projects/IMG-20260710-WA0042.jpg";
+import p43 from "@/assets/projects/IMG-20260710-WA0043.jpg";
+import p44 from "@/assets/projects/IMG-20260710-WA0044.jpg";
 
 function Projects() {
   const projects = [
-    { img: p33.url, title: "Residential Rooftop Array — Lahore", size: "Rooftop Solar" },
-    { img: p38.url, title: "Elevated Ground-Mount Array", size: "High-Yield Setup" },
-    { img: p37.url, title: "Solar Carport Structure", size: "Dual-Purpose Shade + Power" },
-    { img: p44.url, title: "Inverex Nitrox 12kW Hybrid — 3 Phase", size: "12 kW Hybrid" },
-    { img: p39.url, title: "Inverex Nitrox 50kW + 12kW Hybrid Bank", size: "62 kW Combined" },
-    { img: p42.url, title: "Inverex Nitrox 12kW-3P 5G Hybrid", size: "12 kW Hybrid" },
-    { img: p41.url, title: "Huawei On-Grid Inverter Installation", size: "On-Grid System" },
-    { img: p43.url, title: "MaxPower Inverter + Battery Bank", size: "Hybrid + Storage" },
-    { img: p40.url, title: "Crown Nova + Lithium Battery Setup", size: "Hybrid + Lithium" },
-    { img: p34.url, title: "Copper Earthing & Grounding Works", size: "Safety Compliance" },
-    { img: p29.url, title: "Rooftop Panel Array — Residential", size: "Rooftop Solar" },
-    { img: p27.url, title: "Large Rooftop Solar Installation", size: "Commercial Rooftop" },
-    { img: p26.url, title: "High-Capacity Panel Deployment", size: "Rooftop Solar" },
-    { img: p28.url, title: "MaxPower Hybrid Inverter + Battery", size: "Hybrid + Storage" },
-    { img: p30.url, title: "Commercial Steel Structure Prep", size: "Ground-Mount Setup" },
-    { img: p31.url, title: "Elevated Rooftop Solar Structure", size: "Custom Mounting" },
-    { img: p32.url, title: "Growatt Hybrid Inverter Setup", size: "Hybrid Inverter" },
-    { img: p35.url, title: "Solis S5 Series On-Grid Inverter", size: "On-Grid System" },
-    { img: p36.url, title: "Solis Inverter + Distribution Panel", size: "Complete Installation" },
+    { img: p33, title: "Residential Rooftop Array — Lahore", size: "Rooftop Solar" },
+    { img: p38, title: "Elevated Ground-Mount Array", size: "High-Yield Setup" },
+    { img: p37, title: "Solar Carport Structure", size: "Dual-Purpose Shade + Power" },
+    { img: p44, title: "Inverex Nitrox 12kW Hybrid — 3 Phase", size: "12 kW Hybrid" },
+    { img: p39, title: "Inverex Nitrox 50kW + 12kW Hybrid Bank", size: "62 kW Combined" },
+    { img: p42, title: "Inverex Nitrox 12kW-3P 5G Hybrid", size: "12 kW Hybrid" },
+    { img: p41, title: "Huawei On-Grid Inverter Installation", size: "On-Grid System" },
+    { img: p43, title: "MaxPower Inverter + Battery Bank", size: "Hybrid + Storage" },
+    { img: p40, title: "Crown Nova + Lithium Battery Setup", size: "Hybrid + Lithium" },
+    { img: p34, title: "Copper Earthing & Grounding Works", size: "Safety Compliance" },
+    { img: p29, title: "Rooftop Panel Array — Residential", size: "Rooftop Solar" },
+    { img: p27, title: "Large Rooftop Solar Installation", size: "Commercial Rooftop" },
+    { img: p26, title: "High-Capacity Panel Deployment", size: "Rooftop Solar" },
+    { img: p28, title: "MaxPower Hybrid Inverter + Battery", size: "Hybrid + Storage" },
+    { img: p30, title: "Commercial Steel Structure Prep", size: "Ground-Mount Setup" },
+    { img: p31, title: "Elevated Rooftop Solar Structure", size: "Custom Mounting" },
+    { img: p32, title: "Growatt Hybrid Inverter Setup", size: "Hybrid Inverter" },
+    { img: p35, title: "Solis S5 Series On-Grid Inverter", size: "On-Grid System" },
+    { img: p36, title: "Solis Inverter + Distribution Panel", size: "Complete Installation" },
   ];
   const [showAll, setShowAll] = useState(false);
   const visible = showAll ? projects : projects.slice(0, 4);
