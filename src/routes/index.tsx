@@ -20,13 +20,13 @@ import {
   X,
 } from "lucide-react";
 import logoImg from "@/assets/logo.png";
+import ogCover from "@/assets/og-cover.png.asset.json";
 
 const SITE_URL = "https://solar-shine-gateway.lovable.app";
 const PAGE_TITLE = "Professional Energiez — Solar Solutions in Lahore";
 const PAGE_DESC =
   "Professional Energiez Company designs, installs and maintains premium solar energy systems in Lahore. Free consultation, savings calculator, 24/7 support.";
-const OG_IMAGE =
-  "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/88318e62-7342-4312-a538-8184a4867975/id-preview-a8937152--9ec26323-d7ea-49f9-b6c2-769ba0963f44.lovable.app-1783727389008.png";
+const OG_IMAGE = `${SITE_URL}${ogCover.url}`;
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
