@@ -107,3 +107,27 @@
 .animate-testimonial-marquee {
   animation: testimonial-marquee 40s linear infinite;
 }
+
+@keyframes icon-radiate {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0 color-mix(in oklab, var(--solar) 55%, transparent),
+      0 0 0 0 color-mix(in oklab, var(--solar) 40%, transparent);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow:
+      0 0 22px 6px color-mix(in oklab, var(--solar) 65%, transparent),
+      0 0 44px 14px color-mix(in oklab, var(--solar) 25%, transparent);
+    filter: brightness(1.15);
+  }
+}
+
+@utility icon-radiate {
+  animation: icon-radiate 2.4s ease-in-out infinite;
+  will-change: box-shadow, filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-radiate { animation: none; }
+}

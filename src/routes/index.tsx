@@ -140,11 +140,8 @@ function Header() {
             className="h-11 w-11 shrink-0 object-contain"
           />
           <span className="min-w-0">
-            <span className="block truncate font-display text-[15px] font-bold leading-tight text-foreground">
+            <span className="block truncate font-display text-[15px] font-bold leading-tight text-foreground sm:text-base">
               Professional Energiez
-            </span>
-            <span className="block truncate text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-              Company
             </span>
           </span>
         </a>
@@ -210,7 +207,9 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-20 md:px-6 md:py-28 lg:grid-cols-2 lg:items-center">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium backdrop-blur">
-            <BadgeCheck className="h-3.5 w-3.5 text-accent" />
+            <span className="icon-radiate grid h-5 w-5 place-items-center rounded-full bg-accent text-navy">
+              <BadgeCheck className="h-3 w-3" />
+            </span>
             Trusted Solar Experts in Lahore
           </span>
           <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
@@ -222,16 +221,16 @@ function Hero() {
             decades — backed by 24/7 support.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="#calculator"
-              className="inline-flex items-center gap-2 rounded-full bg-solar-gradient px-6 py-3.5 text-sm font-semibold text-navy shadow-lg shadow-black/20 transition hover:-translate-y-0.5"
+              className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-full bg-solar-gradient px-6 py-3.5 text-sm font-semibold text-navy shadow-lg shadow-black/20 transition hover:-translate-y-0.5"
             >
               Get Free Consultation <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href={`tel:${PHONE}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
+              className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
             >
               <PhoneCall className="h-4 w-4" /> {PHONE}
             </a>
@@ -251,7 +250,7 @@ function Hero() {
                 <p className="text-xs uppercase tracking-widest text-white/60">Live estimate</p>
                 <p className="mt-1 font-display text-2xl font-bold">Your Solar Savings</p>
               </div>
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-solar-gradient">
+              <span className="icon-radiate grid h-12 w-12 place-items-center rounded-full bg-solar-gradient">
                 <Sun className="h-6 w-6 text-navy" />
               </span>
             </div>
@@ -308,7 +307,7 @@ function TrustBar() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-6 md:grid-cols-4 md:px-6">
         {items.map((it) => (
           <div key={it.label} className="flex items-center gap-3">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent/20 text-primary">
+            <span className="icon-radiate grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent/20 text-primary">
               <it.icon className="h-4 w-4" />
             </span>
             <span className="text-sm font-medium text-foreground">{it.label}</span>
@@ -373,7 +372,7 @@ function About() {
                 "Round-the-clock monitoring & support",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
+                  <span className="icon-radiate mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
                     <BadgeCheck className="h-3.5 w-3.5" />
                   </span>
                   <span className="text-sm text-foreground">{t}</span>
@@ -387,10 +386,14 @@ function About() {
   );
 }
 
-function SectionTag({ children }: { children: React.ReactNode }) {
+function SectionTag({ children, tone = "light" }: { children: React.ReactNode; tone?: "light" | "dark" }) {
+  const styles =
+    tone === "dark"
+      ? "border-white/30 bg-white/10 text-white backdrop-blur"
+      : "border-primary/20 bg-primary/5 text-primary";
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+    <span className={`inline-flex items-center gap-2 rounded-full border ${styles} px-3 py-1 text-xs font-semibold uppercase tracking-widest`}>
+      <span className="icon-radiate h-1.5 w-1.5 rounded-full bg-accent" />
       {children}
     </span>
   );
@@ -451,7 +454,7 @@ function Services() {
               key={s.title}
               className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary text-primary-foreground transition-colors group-hover:bg-solar-gradient group-hover:text-navy">
+              <span className="icon-radiate grid h-12 w-12 place-items-center rounded-xl bg-primary text-primary-foreground transition-colors group-hover:bg-solar-gradient group-hover:text-navy">
                 <s.icon className="h-6 w-6" />
               </span>
               <h3 className="mt-5 font-display text-xl font-bold text-foreground">
@@ -561,7 +564,7 @@ function Calculator() {
                   {result.systemKw} kW Solar System
                 </p>
               </div>
-              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-solar-gradient text-navy shadow">
+              <span className="icon-radiate grid h-14 w-14 place-items-center rounded-2xl bg-solar-gradient text-navy shadow">
                 <Sun className="h-7 w-7" />
               </span>
             </div>
@@ -811,9 +814,9 @@ function Testimonials() {
 function CTASection() {
   return (
     <section id="contact" className="relative overflow-hidden bg-hero-gradient py-20 text-white md:py-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-start">
         <div>
-          <SectionTag>Free Consultation</SectionTag>
+          <SectionTag tone="dark">Free Consultation</SectionTag>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
             Ready to slash your electricity bill?
           </h2>
@@ -909,14 +912,14 @@ function ContactRow({
   href?: string;
 }) {
   const inner = (
-    <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur transition hover:bg-white/10">
-      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-solar-gradient text-navy">
+    <div className="flex min-h-[68px] items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur transition hover:bg-white/10">
+      <span className="icon-radiate grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-solar-gradient text-navy">
         <Icon className="h-5 w-5" />
       </span>
-      <p className="min-w-0 pt-1.5 text-sm font-medium text-white">{label}</p>
+      <p className="min-w-0 text-sm font-medium leading-snug text-white">{label}</p>
     </div>
   );
-  return href ? <a href={href}>{inner}</a> : inner;
+  return href ? <a href={href} className="block">{inner}</a> : inner;
 }
 
 /* ---------------- Footer ---------------- */
@@ -950,7 +953,6 @@ function Footer() {
             />
             <div>
               <p className="font-display text-base font-bold">Professional Energiez</p>
-              <p className="text-[11px] uppercase tracking-widest text-white/60">Company</p>
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/70">

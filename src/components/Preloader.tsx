@@ -8,13 +8,17 @@ export function Preloader() {
   useEffect(() => {
     const fadeTimer = setTimeout(() => setHidden(true), 1500);
     const removeTimer = setTimeout(() => setMounted(false), 2050);
-    // Prevent background scroll while visible
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const restore = () => {
+      document.body.style.overflow = prevOverflow;
+    };
+    const restoreTimer = setTimeout(restore, 1500);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
-      document.body.style.overflow = prevOverflow;
+      clearTimeout(restoreTimer);
+      restore();
     };
   }, []);
 
