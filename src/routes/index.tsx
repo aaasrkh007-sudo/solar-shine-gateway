@@ -953,7 +953,6 @@ function Footer() {
             />
             <div>
               <p className="font-display text-base font-bold">Professional Energiez</p>
-              <p className="text-[11px] uppercase tracking-widest text-white/60">Company</p>
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/70">
