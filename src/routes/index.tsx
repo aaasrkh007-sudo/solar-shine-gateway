@@ -814,9 +814,9 @@ function Testimonials() {
 function CTASection() {
   return (
     <section id="contact" className="relative overflow-hidden bg-hero-gradient py-20 text-white md:py-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-start">
         <div>
-          <SectionTag>Free Consultation</SectionTag>
+          <SectionTag tone="dark">Free Consultation</SectionTag>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
             Ready to slash your electricity bill?
           </h2>
