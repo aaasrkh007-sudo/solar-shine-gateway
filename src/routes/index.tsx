@@ -912,14 +912,14 @@ function ContactRow({
   href?: string;
 }) {
   const inner = (
-    <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur transition hover:bg-white/10">
-      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-solar-gradient text-navy">
+    <div className="flex min-h-[68px] items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur transition hover:bg-white/10">
+      <span className="icon-radiate grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-solar-gradient text-navy">
         <Icon className="h-5 w-5" />
       </span>
-      <p className="min-w-0 pt-1.5 text-sm font-medium text-white">{label}</p>
+      <p className="min-w-0 text-sm font-medium leading-snug text-white">{label}</p>
     </div>
   );
-  return href ? <a href={href}>{inner}</a> : inner;
+  return href ? <a href={href} className="block">{inner}</a> : inner;
 }
 
 /* ---------------- Footer ---------------- */
