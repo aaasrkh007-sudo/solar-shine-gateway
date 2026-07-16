@@ -221,16 +221,16 @@ function Hero() {
             decades — backed by 24/7 support.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="#calculator"
-              className="inline-flex items-center gap-2 rounded-full bg-solar-gradient px-6 py-3.5 text-sm font-semibold text-navy shadow-lg shadow-black/20 transition hover:-translate-y-0.5"
+              className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-full bg-solar-gradient px-6 py-3.5 text-sm font-semibold text-navy shadow-lg shadow-black/20 transition hover:-translate-y-0.5"
             >
               Get Free Consultation <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href={`tel:${PHONE}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
+              className="inline-flex min-w-[240px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
             >
               <PhoneCall className="h-4 w-4" /> {PHONE}
             </a>
