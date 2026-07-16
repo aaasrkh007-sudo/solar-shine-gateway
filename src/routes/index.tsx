@@ -386,10 +386,14 @@ function About() {
   );
 }
 
-function SectionTag({ children }: { children: React.ReactNode }) {
+function SectionTag({ children, tone = "light" }: { children: React.ReactNode; tone?: "light" | "dark" }) {
+  const styles =
+    tone === "dark"
+      ? "border-white/30 bg-white/10 text-white backdrop-blur"
+      : "border-primary/20 bg-primary/5 text-primary";
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+    <span className={`inline-flex items-center gap-2 rounded-full border ${styles} px-3 py-1 text-xs font-semibold uppercase tracking-widest`}>
+      <span className="icon-radiate h-1.5 w-1.5 rounded-full bg-accent" />
       {children}
     </span>
   );
