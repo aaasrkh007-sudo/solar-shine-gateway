@@ -140,11 +140,8 @@ function Header() {
             className="h-11 w-11 shrink-0 object-contain"
           />
           <span className="min-w-0">
-            <span className="block truncate font-display text-[15px] font-bold leading-tight text-foreground">
+            <span className="block truncate font-display text-[15px] font-bold leading-tight text-foreground sm:text-base">
               Professional Energiez
-            </span>
-            <span className="block truncate text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-              Company
             </span>
           </span>
         </a>
