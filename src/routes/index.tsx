@@ -250,7 +250,7 @@ function Hero() {
                 <p className="text-xs uppercase tracking-widest text-white/60">Live estimate</p>
                 <p className="mt-1 font-display text-2xl font-bold">Your Solar Savings</p>
               </div>
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-solar-gradient">
+              <span className="icon-radiate grid h-12 w-12 place-items-center rounded-full bg-solar-gradient">
                 <Sun className="h-6 w-6 text-navy" />
               </span>
             </div>
