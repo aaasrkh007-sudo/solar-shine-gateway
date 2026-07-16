@@ -207,7 +207,9 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-20 md:px-6 md:py-28 lg:grid-cols-2 lg:items-center">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium backdrop-blur">
-            <BadgeCheck className="h-3.5 w-3.5 text-accent" />
+            <span className="icon-radiate grid h-5 w-5 place-items-center rounded-full bg-accent text-navy">
+              <BadgeCheck className="h-3 w-3" />
+            </span>
             Trusted Solar Experts in Lahore
           </span>
           <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
