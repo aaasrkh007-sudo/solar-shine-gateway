@@ -307,7 +307,7 @@ function TrustBar() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 py-6 md:grid-cols-4 md:px-6">
         {items.map((it) => (
           <div key={it.label} className="flex items-center gap-3">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent/20 text-primary">
+            <span className="icon-radiate grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent/20 text-primary">
               <it.icon className="h-4 w-4" />
             </span>
             <span className="text-sm font-medium text-foreground">{it.label}</span>
@@ -372,7 +372,7 @@ function About() {
                 "Round-the-clock monitoring & support",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
+                  <span className="icon-radiate mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
                     <BadgeCheck className="h-3.5 w-3.5" />
                   </span>
                   <span className="text-sm text-foreground">{t}</span>
@@ -454,7 +454,7 @@ function Services() {
               key={s.title}
               className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary text-primary-foreground transition-colors group-hover:bg-solar-gradient group-hover:text-navy">
+              <span className="icon-radiate grid h-12 w-12 place-items-center rounded-xl bg-primary text-primary-foreground transition-colors group-hover:bg-solar-gradient group-hover:text-navy">
                 <s.icon className="h-6 w-6" />
               </span>
               <h3 className="mt-5 font-display text-xl font-bold text-foreground">
@@ -564,7 +564,7 @@ function Calculator() {
                   {result.systemKw} kW Solar System
                 </p>
               </div>
-              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-solar-gradient text-navy shadow">
+              <span className="icon-radiate grid h-14 w-14 place-items-center rounded-2xl bg-solar-gradient text-navy shadow">
                 <Sun className="h-7 w-7" />
               </span>
             </div>
