@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import ogCover from "@/assets/og-cover.png";
+import { Preloader } from "@/components/Preloader";
 
 const SITE_URL = "https://solar-shine-gateway.lovable.app";
 const PAGE_TITLE = "Professional Energiez — Solar Solutions in Lahore";
@@ -77,6 +78,7 @@ const ADDRESS =
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Preloader />
       <TopBar />
       <Header />
       <Hero />
