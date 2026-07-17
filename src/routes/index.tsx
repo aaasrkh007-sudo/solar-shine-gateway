@@ -276,9 +276,42 @@ function Hero() {
 }
 
 function Stat({ value, label }: { value: string; label: string }) {
+  const match = value.match(/^(\d+)(.*)$/);
+  const target = match ? parseInt(match[1], 10) : 0;
+  const suffix = match ? match[2] : value;
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [display, setDisplay] = useState(match ? 0 : null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    if (!match || !ref.current) return;
+    const el = ref.current;
+    const run = () => {
+      if (started.current) return;
+      started.current = true;
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        setDisplay(Math.round(target * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && run()),
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [match, target]);
+
   return (
-    <div>
-      <p className="font-display text-2xl font-bold text-accent sm:text-3xl">{value}</p>
+    <div ref={ref}>
+      <p className="font-display text-2xl font-bold text-accent sm:text-3xl tabular-nums">
+        {match ? `${display}${suffix}` : value}
+      </p>
       <p className="mt-1 text-xs text-white/70 sm:text-sm">{label}</p>
     </div>
   );
