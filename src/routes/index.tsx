@@ -76,6 +76,26 @@ const ADDRESS =
   "Plaza #22, N Block Market, 1st Floor, Khayaban-e-Amin, Lahore";
 
 function LandingPage() {
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>("section, [data-reveal]");
+    targets.forEach((el) => {
+      if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
+    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Preloader />
