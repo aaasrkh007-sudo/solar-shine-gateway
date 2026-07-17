@@ -329,7 +329,7 @@ function Stat({ value, label }: { value: string; label: string }) {
   }, [match, target]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="text-center sm:text-left">
       <p className="font-display text-2xl font-bold text-accent sm:text-3xl tabular-nums">
         {match ? `${display}${suffix}` : value}
       </p>
@@ -337,6 +337,7 @@ function Stat({ value, label }: { value: string; label: string }) {
     </div>
   );
 }
+
 
 function MiniCard({ label, value }: { label: string; value: string }) {
   return (
