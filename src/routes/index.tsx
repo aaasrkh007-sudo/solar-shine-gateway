@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Sun,
   Zap,
@@ -76,6 +76,26 @@ const ADDRESS =
   "Plaza #22, N Block Market, 1st Floor, Khayaban-e-Amin, Lahore";
 
 function LandingPage() {
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>("section, [data-reveal]");
+    targets.forEach((el) => {
+      if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
+    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Preloader />
@@ -276,9 +296,43 @@ function Hero() {
 }
 
 function Stat({ value, label }: { value: string; label: string }) {
+  const shouldAnimate = !value.includes("/");
+  const match = shouldAnimate ? value.match(/^(\d+)(.*)$/) : null;
+  const target = match ? parseInt(match[1], 10) : 0;
+  const suffix = match ? match[2] : value;
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [display, setDisplay] = useState(match ? 0 : null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    if (!match || !ref.current) return;
+    const el = ref.current;
+    const run = () => {
+      if (started.current) return;
+      started.current = true;
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        setDisplay(Math.round(target * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && run()),
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [match, target]);
+
   return (
-    <div>
-      <p className="font-display text-2xl font-bold text-accent sm:text-3xl">{value}</p>
+    <div ref={ref}>
+      <p className="font-display text-2xl font-bold text-accent sm:text-3xl tabular-nums">
+        {match ? `${display}${suffix}` : value}
+      </p>
       <p className="mt-1 text-xs text-white/70 sm:text-sm">{label}</p>
     </div>
   );
@@ -814,8 +868,8 @@ function Testimonials() {
 function CTASection() {
   return (
     <section id="contact" className="relative overflow-hidden bg-hero-gradient py-20 text-white md:py-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-start">
-        <div>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-stretch">
+        <div className="flex h-full flex-col">
           <SectionTag tone="dark">Free Consultation</SectionTag>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
             Ready to slash your electricity bill?
@@ -824,7 +878,7 @@ function CTASection() {
             Book a free site survey. Our engineers will design a solar system
             tailored to your consumption, roof and budget — no obligations.
           </p>
-          <div className="mt-8 space-y-3">
+          <div className="mt-8 space-y-3 lg:mt-auto">
             <ContactRow icon={PhoneCall} label={PHONE} href={`tel:${PHONE}`} />
             <ContactRow icon={MapPin} label={ADDRESS} />
             <ContactRow icon={Clock} label="Open 24 hours · 7 days a week" />
