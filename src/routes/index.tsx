@@ -276,7 +276,8 @@ function Hero() {
 }
 
 function Stat({ value, label }: { value: string; label: string }) {
-  const match = value.match(/^(\d+)(.*)$/);
+  const shouldAnimate = !value.includes("/");
+  const match = shouldAnimate ? value.match(/^(\d+)(.*)$/) : null;
   const target = match ? parseInt(match[1], 10) : 0;
   const suffix = match ? match[2] : value;
   const ref = useRef<HTMLDivElement | null>(null);
