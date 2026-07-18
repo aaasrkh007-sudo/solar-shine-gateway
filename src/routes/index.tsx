@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import ogCover from "@/assets/og-cover.png";
+import heroBgAsset from "@/assets/hero-bg.jpg.asset.json";
 import { Preloader } from "@/components/Preloader";
 
 const SITE_URL = "https://solar-shine-gateway.lovable.app";
