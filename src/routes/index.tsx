@@ -232,7 +232,17 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-hero-gradient text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-20 md:px-6 md:py-28 lg:grid-cols-2 lg:items-center">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity"
+        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/60 to-navy/85"
+      />
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-20 md:px-6 md:py-28 lg:grid-cols-2 lg:items-center">
+
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium backdrop-blur">
             <span className="icon-radiate grid h-5 w-5 place-items-center rounded-full bg-accent text-navy">
