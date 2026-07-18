@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import ogCover from "@/assets/og-cover.png";
+import heroBgAsset from "@/assets/hero-bg.jpg.asset.json";
 import { Preloader } from "@/components/Preloader";
 
 const SITE_URL = "https://solar-shine-gateway.lovable.app";
@@ -77,9 +78,16 @@ const ADDRESS =
 
 function LandingPage() {
   useEffect(() => {
-    const targets = document.querySelectorAll<HTMLElement>("section, [data-reveal]");
+    const targets = document.querySelectorAll<HTMLElement>(
+      "section, [data-reveal], [data-reveal-group]"
+    );
     targets.forEach((el) => {
-      if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
+      if (
+        !el.hasAttribute("data-reveal") &&
+        !el.hasAttribute("data-reveal-group")
+      ) {
+        el.setAttribute("data-reveal", "");
+      }
     });
     const io = new IntersectionObserver(
       (entries) => {
@@ -224,7 +232,17 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-hero-gradient text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-20 md:px-6 md:py-28 lg:grid-cols-2 lg:items-center">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity"
+        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/60 to-navy/85"
+      />
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-20 md:px-6 md:py-28 lg:grid-cols-2 lg:items-center">
+
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium backdrop-blur">
             <span className="icon-radiate grid h-5 w-5 place-items-center rounded-full bg-accent text-navy">
@@ -503,7 +521,7 @@ function Services() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div data-reveal-group className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <div
               key={s.title}
@@ -750,7 +768,7 @@ function Projects() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-reveal-group className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {visible.map((p, i) => (
             <div
               key={i}
@@ -900,10 +918,10 @@ function CTASection() {
             We'll respond within 30 minutes.
           </p>
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Field name="name" label="Full Name" placeholder="Your name" required />
-            <Field name="phone" label="Phone" placeholder="03xx-xxxxxxx" required />
+            <Field name="name" label="Full Name" placeholder="Your name" required validate="name" />
+            <Field name="phone" label="Phone" placeholder="03xx-xxxxxxx" required validate="phone" />
           </div>
-          <Field name="bill" label="Monthly Bill (PKR)" placeholder="e.g. 25000" className="mt-3" />
+          <Field name="bill" label="Monthly Bill (PKR)" placeholder="e.g. 25000" className="mt-3" validate="number" />
           <div className="mt-3">
             <label htmlFor="cta-message" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               Message
@@ -934,25 +952,67 @@ function Field({
   placeholder,
   required,
   className = "",
+  validate = "text",
 }: {
   name: string;
   label: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
+  validate?: "text" | "name" | "phone" | "number";
 }) {
+  const [value, setValue] = useState("");
+  const [touched, setTouched] = useState(false);
+
+  const getError = (v: string): string => {
+    if (!v) return required ? "This field is required." : "";
+    if (validate === "name") {
+      if (!/^[A-Za-z\s.'-]+$/.test(v)) return "Name can only contain letters.";
+    } else if (validate === "phone") {
+      const digits = v.replace(/[\s-]/g, "");
+      if (!/^[0-9+]+$/.test(digits)) return "Phone can only contain numbers.";
+      if (digits.replace(/\D/g, "").length < 10) return "Enter a valid phone number.";
+    } else if (validate === "number") {
+      if (!/^[0-9,\s]+$/.test(v)) return "Only numbers are allowed.";
+    }
+    return "";
+  };
+
+  const error = touched ? getError(value) : "";
+  const inputType = validate === "phone" ? "tel" : validate === "number" ? "text" : "text";
+  const inputMode = validate === "phone" || validate === "number" ? "numeric" : undefined;
+
   return (
     <div className={className}>
-      <label htmlFor={`field-${name}`} className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <label
+        htmlFor={`field-${name}`}
+        className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+      >
         {label}
       </label>
       <input
         id={`field-${name}`}
         name={name}
+        type={inputType}
+        inputMode={inputMode}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={() => setTouched(true)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `field-${name}-error` : undefined}
+        className={`w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none transition focus:ring-2 ${
+          error
+            ? "border-red-500 focus:ring-red-500/40"
+            : "border-input focus:ring-ring"
+        }`}
       />
+      {error ? (
+        <p id={`field-${name}-error`} className="mt-1 text-xs font-medium text-red-600">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -998,7 +1058,7 @@ function Footer() {
   ];
   return (
     <footer className="bg-navy text-navy-foreground">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 md:grid-cols-4 md:px-6">
+      <div data-reveal-group className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
           <div className="flex items-center gap-2.5">
             <img
@@ -1023,9 +1083,9 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className="font-display text-sm font-bold uppercase tracking-widest text-accent">
-            Sitemap
-          </h4>
+          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-accent">
+            Quick Links
+          </h3>
           <ul className="mt-4 space-y-2.5 text-sm text-white/75">
             {nav.map((n) => (
               <li key={n.href}>
