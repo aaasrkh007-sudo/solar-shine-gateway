@@ -918,10 +918,10 @@ function CTASection() {
             We'll respond within 30 minutes.
           </p>
           <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Field name="name" label="Full Name" placeholder="Your name" required />
-            <Field name="phone" label="Phone" placeholder="03xx-xxxxxxx" required />
+            <Field name="name" label="Full Name" placeholder="Your name" required validate="name" />
+            <Field name="phone" label="Phone" placeholder="03xx-xxxxxxx" required validate="phone" />
           </div>
-          <Field name="bill" label="Monthly Bill (PKR)" placeholder="e.g. 25000" className="mt-3" />
+          <Field name="bill" label="Monthly Bill (PKR)" placeholder="e.g. 25000" className="mt-3" validate="number" />
           <div className="mt-3">
             <label htmlFor="cta-message" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               Message
