@@ -234,7 +234,7 @@ function Hero() {
     <section id="top" className="relative overflow-hidden bg-hero-gradient text-white">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-45"
         style={{ backgroundImage: `url(${heroBgAsset.url})` }}
       />
       <div
@@ -887,7 +887,16 @@ function Testimonials() {
 function CTASection() {
   return (
     <section id="contact" className="relative overflow-hidden bg-hero-gradient py-20 text-white md:py-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-stretch">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
+        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/60 to-navy/85"
+      />
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 md:px-6 lg:grid-cols-2 lg:items-stretch">
         <div className="flex h-full flex-col">
           <SectionTag tone="dark">Free Consultation</SectionTag>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
