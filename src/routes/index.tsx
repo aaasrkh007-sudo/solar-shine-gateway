@@ -952,25 +952,67 @@ function Field({
   placeholder,
   required,
   className = "",
+  validate = "text",
 }: {
   name: string;
   label: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
+  validate?: "text" | "name" | "phone" | "number";
 }) {
+  const [value, setValue] = useState("");
+  const [touched, setTouched] = useState(false);
+
+  const getError = (v: string): string => {
+    if (!v) return required ? "This field is required." : "";
+    if (validate === "name") {
+      if (!/^[A-Za-z\s.'-]+$/.test(v)) return "Name can only contain letters.";
+    } else if (validate === "phone") {
+      const digits = v.replace(/[\s-]/g, "");
+      if (!/^[0-9+]+$/.test(digits)) return "Phone can only contain numbers.";
+      if (digits.replace(/\D/g, "").length < 10) return "Enter a valid phone number.";
+    } else if (validate === "number") {
+      if (!/^[0-9,\s]+$/.test(v)) return "Only numbers are allowed.";
+    }
+    return "";
+  };
+
+  const error = touched ? getError(value) : "";
+  const inputType = validate === "phone" ? "tel" : validate === "number" ? "text" : "text";
+  const inputMode = validate === "phone" || validate === "number" ? "numeric" : undefined;
+
   return (
     <div className={className}>
-      <label htmlFor={`field-${name}`} className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+      <label
+        htmlFor={`field-${name}`}
+        className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+      >
         {label}
       </label>
       <input
         id={`field-${name}`}
         name={name}
+        type={inputType}
+        inputMode={inputMode}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={() => setTouched(true)}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `field-${name}-error` : undefined}
+        className={`w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none transition focus:ring-2 ${
+          error
+            ? "border-red-500 focus:ring-red-500/40"
+            : "border-input focus:ring-ring"
+        }`}
       />
+      {error ? (
+        <p id={`field-${name}-error`} className="mt-1 text-xs font-medium text-red-600">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
