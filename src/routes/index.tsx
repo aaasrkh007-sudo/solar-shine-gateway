@@ -1058,7 +1058,7 @@ function Footer() {
   ];
   return (
     <footer className="bg-navy text-navy-foreground">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 md:grid-cols-4 md:px-6">
+      <div data-reveal-group className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-16 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
           <div className="flex items-center gap-2.5">
             <img
