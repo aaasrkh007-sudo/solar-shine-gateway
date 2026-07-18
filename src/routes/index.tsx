@@ -77,9 +77,16 @@ const ADDRESS =
 
 function LandingPage() {
   useEffect(() => {
-    const targets = document.querySelectorAll<HTMLElement>("section, [data-reveal]");
+    const targets = document.querySelectorAll<HTMLElement>(
+      "section, [data-reveal], [data-reveal-group]"
+    );
     targets.forEach((el) => {
-      if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
+      if (
+        !el.hasAttribute("data-reveal") &&
+        !el.hasAttribute("data-reveal-group")
+      ) {
+        el.setAttribute("data-reveal", "");
+      }
     });
     const io = new IntersectionObserver(
       (entries) => {
