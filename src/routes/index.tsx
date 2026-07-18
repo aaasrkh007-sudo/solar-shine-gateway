@@ -1083,8 +1083,8 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className="font-display text-sm font-bold uppercase tracking-widest text-accent">
-            Sitemap
+          <h3 className="font-display text-sm font-bold uppercase tracking-widest text-accent">
+            Quick Links
           </h4>
           <ul className="mt-4 space-y-2.5 text-sm text-white/75">
             {nav.map((n) => (
