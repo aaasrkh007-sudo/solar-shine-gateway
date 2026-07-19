@@ -235,7 +235,7 @@ function Hero() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-45"
-        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div
         aria-hidden
@@ -895,7 +895,7 @@ function CTASection() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
-        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div
         aria-hidden
