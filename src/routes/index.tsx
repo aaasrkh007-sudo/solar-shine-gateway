@@ -340,10 +340,15 @@ function Stat({ value, label }: { value: string; label: string }) {
     };
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && run()),
-      { threshold: 0.3 }
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
     io.observe(el);
-    return () => io.disconnect();
+    // Fallback: hero stats are above the fold; ensure count runs even if IO is delayed.
+    const fallback = window.setTimeout(run, 1800);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [match, target]);
 
   return (
