@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 import ogCover from "@/assets/og-cover.png";
-import heroBgAsset from "@/assets/hero-bg.jpg.asset.json";
+import heroBg from "@/assets/hero-bg.jpg";
 import { Preloader } from "@/components/Preloader";
 
 const SITE_URL = "https://solar-shine-gateway.lovable.app";
@@ -235,7 +235,7 @@ function Hero() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-45"
-        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div
         aria-hidden
@@ -340,10 +340,15 @@ function Stat({ value, label }: { value: string; label: string }) {
     };
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && run()),
-      { threshold: 0.3 }
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
     io.observe(el);
-    return () => io.disconnect();
+    // Fallback: hero stats are above the fold; ensure count runs even if IO is delayed.
+    const fallback = window.setTimeout(run, 1800);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [match, target]);
 
   return (
@@ -890,7 +895,7 @@ function CTASection() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
-        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div
         aria-hidden
